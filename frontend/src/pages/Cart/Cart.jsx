@@ -9,6 +9,17 @@ const Cart = () => {
 
   const navigate=useNavigate();
 
+  const handleCheckoutClick = () => {
+    const token = localStorage.getItem("token"); 
+
+    if (!token) {
+      alert("Please login first");
+      return;
+    }
+
+    navigate("/order");
+  };
+
   return (
     <div className="cart">
       <div className="cart-items">
@@ -59,7 +70,7 @@ const Cart = () => {
               <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
             </div>
           </div>
-          <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
+          <button onClick={handleCheckoutClick}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cart-promocode">
           <div>
